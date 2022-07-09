@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     ArrayList<String> urls= new ArrayList<>();
+    ArrayList<String> nameList= new ArrayList<>();
     // Creating Object of ViewPagerAdapter
     ViewPageAdapter mViewPageAdapter;
 
@@ -34,30 +35,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView name = findViewById(R.id.name);
-
         String jsonFileString = Utils.getJsonFromAssets(getApplicationContext(), "data.json");
         Log.i("data", jsonFileString);
         Gson gson = new Gson();
         Type listUserType = new TypeToken<List<GetData>>() { }.getType();
         List<GetData> users = gson.fromJson(jsonFileString, listUserType);
         for (int i = 0; i < users.size(); i++) {
-           // Log.i("data", "> Item " + i + "\n" + users.get(i));
+            // Log.i("data", "> Item " + i + "\n" + users.get(i));
             String datee= users.get(i).getDate();
             users.get(i).getExplanation();
             String url =users.get(i).getUrl();
             String title=users.get(i).getTitle();
-            name.setText(title);
             urls.add(url);
+            nameList.add(title);
         }
 
         setContentView(R.layout.activity_main);
 
         // Initializing the ViewPager Object
-        mViewPager = (ViewPager)findViewById(R.id.viewPagerMain);
+        mViewPager = (ViewPager)findViewById(R.id.viewpager1);
 
         // Initializing the ViewPagerAdapter
-        mViewPageAdapter = new ViewPageAdapter(MainActivity.this, urls);
+        mViewPageAdapter = new ViewPageAdapter(MainActivity.this, urls, nameList);
 
         // Adding the Adapter to the ViewPager
         mViewPager.setAdapter(mViewPageAdapter);

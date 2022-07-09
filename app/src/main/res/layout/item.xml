@@ -1,12 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+   tools:context="com.app.nasaapp.MainActivity"
+    android:background="@color/beige"
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <!-- image viwer to view the images -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:text="Some Text"
+        android:textSize="25sp"
+        android:id="@+id/textViewMain"
+        android:gravity="center" />
     <ImageView
-        android:id="@+id/imageViewMain"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewmain" />
+    <ImageView
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/swipe">
+    </ImageView>
 </LinearLayout>
