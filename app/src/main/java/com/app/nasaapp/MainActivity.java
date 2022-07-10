@@ -27,7 +27,12 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> urls= new ArrayList<>();
     ArrayList<String> nameList= new ArrayList<>();
-    // Creating Object of ViewPagerAdapter
+    ArrayList<String> dateList= new ArrayList<>();
+    ArrayList<String> explanationList= new ArrayList<>();
+    ArrayList<String> copyRightList= new ArrayList<>();
+    ArrayList<String> mediaList= new ArrayList<>();
+    ArrayList<String> serviceVersionList= new ArrayList<>();
+
     ViewPageAdapter mViewPageAdapter;
 
     @Override
@@ -46,8 +51,17 @@ public class MainActivity extends AppCompatActivity {
             users.get(i).getExplanation();
             String url =users.get(i).getUrl();
             String title=users.get(i).getTitle();
+            String description=users.get(i).getExplanation();
+            String copyRight=users.get(i).getCopyright();
+            String mediaType=users.get(i).getMediaType();
+            String serviceVersion=users.get(i).getServiceVersion();
             urls.add(url);
             nameList.add(title);
+            dateList.add(datee);
+            mediaList.add(mediaType);
+            copyRightList.add(copyRight);
+            explanationList.add(description);
+            serviceVersionList.add(serviceVersion);
         }
 
         setContentView(R.layout.activity_main);
@@ -56,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager)findViewById(R.id.viewpager1);
 
         // Initializing the ViewPagerAdapter
-        mViewPageAdapter = new ViewPageAdapter(MainActivity.this, urls, nameList);
+        mViewPageAdapter = new ViewPageAdapter(MainActivity.this, urls, nameList, explanationList, dateList, copyRightList, mediaList, serviceVersionList);
 
         // Adding the Adapter to the ViewPager
         mViewPager.setAdapter(mViewPageAdapter);
